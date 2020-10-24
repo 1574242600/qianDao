@@ -16,5 +16,4 @@ function getAllModules() {
         let msg = await require(`./modules/${module}/main`)();
         console.log(`模块[${module}]:\n ${msg}`)
     }
-})()
-
+})();
