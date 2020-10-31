@@ -19,5 +19,5 @@ function getAllModules() {
     }
 })().catch(e => {
     console.error(e)
-})
+});
 
