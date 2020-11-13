@@ -82,7 +82,7 @@ async function signTb(fid, tbs, kw) {
     })
 }
 
-module.exports = async () => {
+module.exports = async (Main) => {
     try {
         const tbs = await getTbs();
         const tbList = await getTbList();
@@ -91,9 +91,8 @@ module.exports = async () => {
             await signTb(v.id, tbs, v.name);
         }
 
-        return `共签到${tbTotal}个吧, 失败${errConut}个`;
+        Main.log(`共签到${tbTotal}个吧, 失败${errConut}个`);
     } catch (e) {
-        return e;
+        Main.error(e);
     }
 }
-module.exports()

@@ -7,16 +7,53 @@ global.AESDecryp = (ciphertext) => {
     return bytes.toString(CryptoJS.enc.Utf8);
 }
 
-function getAllModules() {
-    return Fs.readdirSync("./modules");
+function getModules() {
+    const modules = Fs.readdirSync("./modules");
+    return  modules ? modules : [];
+}
+
+class Main {
+    constructor() {
+        this.i = 0;
+        this.errorCount = 0;
+        this.modules = getModules();
+    }
+
+    async start() {
+        if (this.i + 1 > this.modules.length) return ;
+        this.module_name = this.modules[this.i];
+
+        try { 
+            await require(`./modules/${this.module_name}/main`)(this);
+            this.log('运行完毕');
+            await this.next()
+        } catch (e) {
+            this.error(e);
+            await this.next()
+        }
+    }
+
+    async next() {
+        if (this.i + 1 > this.modules.length - 1) return ;
+        this.i++;
+        this.start();
+    }
+
+    error(msg) {
+        console.error(`模块[${this.module_name}]错误:\n ${msg}`);
+    }
+
+    warn(msg) {
+        console.warn(`模块[${this.module_name}]警告:\n ${msg}`);
+    };
+
+    log(msg) {
+        console.log(`模块[${this.module_name}]: ${msg}`);
+    }
 }
 
 (async () => {
-    for (let module_name of getAllModules()) {
-        console.log(`模块[${module_name}]开始运行:`);
-        let msg = await require(`./modules/${module_name}/main`)();
-        console.log(`模块[${module_name}]:\n ${msg}`);
-    }
+    (new Main()).start();
 })().catch(e => {
     console.error(e)
 });
