@@ -88,7 +88,7 @@ module.exports = async (Main) => {
         const tbList = await getTbList();
         tbTotal = tbList.length;
         for (v of tbList) { 
-            await signTb(v.id, tbs, v.name);
+            //await signTb(v.id, tbs, v.name);
         }
 
         Main.log(`共签到${tbTotal}个吧, 失败${errConut}个`);
