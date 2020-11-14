@@ -9,7 +9,7 @@ global.AESDecryp = (ciphertext) => {
 
 function getModules() {
     const modules = Fs.readdirSync("./modules");
-    return  modules ? modules : [];
+    return modules ? modules : [];
 }
 
 class Main {

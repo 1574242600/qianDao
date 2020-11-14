@@ -76,6 +76,7 @@ async function signTb(fid, tbs, kw) {
         body: toQueryString(data)
     }).then(async v => {
         const json = await v.json();
+    
         if (json.error_code != 0) throw '签到失败';
     }).catch(() => {
         errConut++;
@@ -88,7 +89,7 @@ module.exports = async (Main) => {
         const tbList = await getTbList();
         tbTotal = tbList.length;
         for (v of tbList) { 
-            //await signTb(v.id, tbs, v.name);
+            await signTb(v.id, tbs, v.name);
         }
 
         Main.log(`共签到${tbTotal}个吧, 失败${errConut}个`);
