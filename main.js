@@ -1,6 +1,6 @@
 const Fs = require('fs');
 const CryptoJS = require("crypto-js");
-
+ 
 global.AESDecryp = (ciphertext) => {
     const decryp_key = process.argv[2];
     let bytes = CryptoJS.AES.decrypt(ciphertext, decryp_key);
