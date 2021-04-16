@@ -3,7 +3,7 @@ const CryptoJS = require("crypto-js");
 
 let tbTotal = 0;
 let errConut = 0;
-const BDUSS = AESDecryp('U2FsdGVkX18RzV4LogquP5BIfvAKvM9nroQiV6nPXpfdetporGfzj9NDnqoIyUhNOZj5hnDZGqUK1PJUXIpijC5m0XHfLNLZJiKLuV27AyIKpF2Uyva/QGVY755pSvn+GSyV1R88IxNqoDGeOgJxth1V0rZBtbjwTYHRM+o5rEo4g2/LcNbJcCux5aZlNIkffd/4ZE09vwDudKbAt5sESacb6LGL9g4QYhMqQ5jqjVcZc6P4qKtHTHYWh1oU82PI43Scx/YNQjN3TwOphLZJAYf7HDTwIQJgfDBs4JGuszQ=');
+const BDUSS = AESDecryp('U2FsdGVkX19o+Hptj35cCwrxdiPd2vofWl8UCyW+bwmGQPqBoTiEj4SR5Co+mZKsVd3mBwn9dP/MRKfyCqBz5kwhg9nhh1y8y2qhi+znJFJiafjxX6ijTZBXHsMyLIQZNDx36ar5bbmbKhhJWxXR2IzA/jM1Qj5/M/uy876RpvWUaFHo4Hp/LJPF7bqLRDIfD1dEE47NdbA1330+YnQhDsXaSdd6vqK4uCij5qo0fLfhAIbTZL2SbqXJ2Art1ceV8txh3V1uTnhK/DDucgRZuNedF3N91RN8yxACYcFu5Z4=');
 
 function toQueryString(data) {
     return Object.keys(data)
